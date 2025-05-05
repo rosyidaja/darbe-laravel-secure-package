@@ -2,25 +2,17 @@
 
 namespace Darbe\SecurePayload;
 
-use App\Models\Client;
-
 class SecurePayload
 {
-    public static function encrypt(array $data, string $clientId): ?string
+    public static function encrypt(array $data, string $clientId, string $secretKey): ?string
     {
-        $client = Client::where('client_id', $clientId)->first();
-        if (!$client) return null;
-
-        $cipher = new SecureJsonCipher($client->secret_key);
+        $cipher = new SecureJsonCipher($secretKey, $clientId);
         return $cipher->encrypt($data);
     }
 
-    public static function decrypt(string $payload, string $clientId): ?array
+    public static function decrypt(string $payload, string $clientId, string $secretKey): ?array
     {
-        $client = Client::where('client_id', $clientId)->first();
-        if (!$client) return null;
-
-        $cipher = new SecureJsonCipher($client->secret_key);
+        $cipher = new SecureJsonCipher($client->secret_key, $clientId);
         return $cipher->decrypt($payload);
     }
 }
