@@ -12,7 +12,7 @@ class SecurePayload
 
     public static function decrypt(string $payload, string $clientId, string $secretKey): ?array
     {
-        $cipher = new SecureJsonCipher($client->secret_key, $clientId);
+        $cipher = new SecureJsonCipher($secretKey, $clientId);
         return $cipher->decrypt($payload);
     }
 }
