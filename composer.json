@@ -1,0 +1,27 @@
+{
+  "name": "darbe/laravel-secure-payload",
+  "description": "Reusable secure payload encryption and decryption using client_id and secret_key",
+  "type": "library",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Darbe\\SecurePayload\\": "src/"
+    }
+  },
+  "require": {
+    "php": ">=7.2",
+    "illuminate/support": "^6.0 || ^7.0 || ^8.0 || ^9.0 || ^10.0"
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Darbe\\SecurePayload\\SecurePayloadServiceProvider"
+      ],
+      "aliases": {
+        "SecurePayload": "Darbe\\SecurePayload\\Facades\\SecurePayload"
+      }
+    }
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true
+}
