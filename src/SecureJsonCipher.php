@@ -12,7 +12,7 @@ class SecureJsonCipher
 
     public function __construct(string $secretKey, string $clientId)
     {
-        $this->key = $clientId != '00001' ? hash('sha256', $secretKey, true) : $secretKey;
+        $this->key = hash('sha256', $secretKey, true);
         $this->iv = substr($this->key, 0, 16);
         $this->clientId = $clientId;
     }
